@@ -1,0 +1,33 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Azure Login And Build React Project by Node.js And Make-Push Docker IMG
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:                                # Job 설정
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.   # Repo checkout
+        uses: actions/checkout@v3
+      - name: Check Node v            # Node v check
+        run: node -v
+      - name: Install dependencies    # dependency install
+        run: npm install
+      - name: Generate build          # React Build
+        run: npm run build
+        
+      - name: 'Azure Container Login AND Build and push Docker image'
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:${{ github.sha }} .
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:${{ github.sha }}
+
+      

@@ -27,7 +27,7 @@ jobs:                                # Job 설정
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:${{ github.sha }} .
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:${{ github.sha }}
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:latest .
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/cardvisorfe:latest
 
       

@@ -5,7 +5,7 @@ import logo from './logo.svg';
 function App() {
   axios({
         method: 'get',
-        url: 'test',
+        url: '/api/test',
     })
         .then((res) => {
             console.log(res.data);

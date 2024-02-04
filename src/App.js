@@ -1,7 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import { useCallback, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
+import logo from './logo.svg';
 
 function App() {
   axios({

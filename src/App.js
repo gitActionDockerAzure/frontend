@@ -2,6 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  axios({
+        method: 'get',
+        url: 'test',
+    })
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
   return (
     <div className="App">
       <header className="App-header">

@@ -3,19 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Temp1 from './views/main/Temp1';
 import Tt from './views/tt/Tt';
+import Temp2 from './views/main/Temp2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
-                <Route path="/" element={<Tt />} />
+                <Route path="/" element={<Navigate replace to="/temp" />} />
                 <Route path="/temp" element={<Temp1 />} />
                 <Route path="/app" element={<App />} />
+                <Route path="/temp2" element={<Temp2 />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

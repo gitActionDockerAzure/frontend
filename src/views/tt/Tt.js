@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Tt(props) {
     const API_SERVER = process.env.REACT_APP_API_SERVER;
@@ -19,6 +20,7 @@ function Tt(props) {
         <div>
             <h1>/ 경로로 진입</h1>
             <p>{temp2}</p>
+            <Link to="/temp">temp.js 로 이동</Link>
         </div>
     );
 }
